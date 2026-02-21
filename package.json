@@ -1,0 +1,33 @@
+{
+  "name": "mcp-tool-lint",
+  "version": "0.1.0",
+  "description": "Static linter for MCP tool definitions — catch quality defects before deployment",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "mcp-tool-lint": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && node --experimental-strip-types --no-warnings --test tests/*.test.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "linting",
+    "tools",
+    "ai",
+    "claude"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
