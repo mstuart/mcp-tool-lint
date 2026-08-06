@@ -1,5 +1,15 @@
-# mcp-tool-lint
+<div align="center">
+  <img src="docs/assets/logo.svg" alt="mcp-tool-lint — Static linter for MCP tool definitions — catch quality defects before deployment" width="720">
+</div>
 
+<p align="center"><strong>Static linter for MCP tool definitions — catch quality defects before deployment</strong></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/mcp-tool-lint"><img src="https://img.shields.io/npm/v/mcp-tool-lint?label=npm" alt="npm"></a>
+  <img src="https://img.shields.io/badge/node-%E2%89%A518-339933.svg" alt="Node 18+">
+</p>
+
+---
 Static linter for [MCP (Model Context Protocol)](https://modelcontextprotocol.io) tool definitions. Catches quality defects before deployment so AI agents use your tools correctly.
 
 A February 2026 research paper analyzing 1,899 MCP tools from 200 servers found that **97.1% have at least one quality defect** -- unclear descriptions, missing parameter documentation, vague naming, and more. These defects cause AI agents to misuse tools, leading to failed actions and poor user experiences.
