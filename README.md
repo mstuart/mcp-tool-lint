@@ -8,6 +8,8 @@
   <a href="https://github.com/mstuart/mcp-tool-lint/actions/workflows/ci.yml"><img src="https://github.com/mstuart/mcp-tool-lint/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://www.npmjs.com/package/mcp-tool-lint"><img src="https://img.shields.io/npm/v/mcp-tool-lint?label=npm" alt="npm"></a>
   <img src="https://img.shields.io/badge/node-%E2%89%A518-339933.svg" alt="Node 18+">
+  <a href="https://deepwiki.com/mstuart/mcp-tool-lint"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+  <a href="https://socket.dev/npm/package/mcp-tool-lint"><img src="https://socket.dev/api/badge/npm/package/mcp-tool-lint" alt="Socket"></a>
 </p>
 
 ---
