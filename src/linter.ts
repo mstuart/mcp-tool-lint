@@ -1,5 +1,11 @@
-import { McpToolDefinition, LintResult, LintIssue, Rule, Severity } from './types.js';
-import { allRules } from './rules/index.js';
+import { allRules } from "./rules/index.js";
+import type {
+  LintIssue,
+  LintResult,
+  McpToolDefinition,
+  Rule,
+  Severity,
+} from "./types.js";
 
 export interface LintOptions {
   rules?: Rule[];
@@ -8,7 +14,11 @@ export interface LintOptions {
   };
 }
 
-export function lintTool(tool: McpToolDefinition, opts?: LintOptions, allTools?: McpToolDefinition[]): LintResult {
+export function lintTool(
+  tool: McpToolDefinition,
+  opts?: LintOptions,
+  allTools?: McpToolDefinition[]
+): LintResult {
   const rules = opts?.rules ?? allRules;
   const severityOverrides = opts?.severity ?? {};
 
@@ -25,17 +35,23 @@ export function lintTool(tool: McpToolDefinition, opts?: LintOptions, allTools?:
   }
 
   return {
-    tool: tool.name,
     issues,
-    passed: !issues.some(i => i.severity === 'error'),
+    passed: !issues.some((i) => i.severity === "error"),
+    tool: tool.name,
   };
 }
 
-export function lintTools(tools: McpToolDefinition[], opts?: LintOptions): LintResult[] {
-  return tools.map(tool => lintTool(tool, opts, tools));
+export function lintTools(
+  tools: McpToolDefinition[],
+  opts?: LintOptions
+): LintResult[] {
+  return tools.map((tool) => lintTool(tool, opts, tools));
 }
 
-export function validateTools(tools: McpToolDefinition[], opts?: LintOptions): boolean {
+export function validateTools(
+  tools: McpToolDefinition[],
+  opts?: LintOptions
+): boolean {
   const results = lintTools(tools, opts);
-  return results.every(r => r.passed);
+  return results.every((r) => r.passed);
 }
