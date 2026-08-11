@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         # Node 20 reached end of life in April 2026.
-        node: ['22', '24']
+        node: ["22", "24"]
 
     steps:
       - uses: actions/checkout@v4
@@ -24,5 +24,14 @@ jobs:
       - run: npm ci
       - name: Ultracite check
         run: npm run check
+      - run: npm run typecheck
       - run: npm run build
       - run: npm test
+      - run: npm pack --dry-run
+      - name: Install smoke test
+        run: |
+          npm pack --pack-destination "$RUNNER_TEMP"
+          npm install -g "$RUNNER_TEMP"/mcp-tool-lint-*.tgz
+          mcp-tool-lint --version
+          mcp-tool-lint examples/tools.json
+          cat examples/tools.json | mcp-tool-lint --json -

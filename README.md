@@ -169,24 +169,62 @@ When linting multiple tools, no two tools should have the same `name`. Duplicate
 # Basic usage
 npx mcp-tool-lint tools.json
 
+# Read tool definitions from stdin
+cat tools.json | npx mcp-tool-lint -
+
+# Emit stable JSON for automation
+npx mcp-tool-lint --json tools.json
+
+# Combine JSON output with stdin
+cat tools.json | npx mcp-tool-lint --json -
+
 # Show help
 npx mcp-tool-lint --help
 
-# Show version
+# Show version from package metadata
 npx mcp-tool-lint --version
 ```
 
 Exit codes:
 - `0` -- all tools pass (warnings are OK)
-- `1` -- at least one tool has an error-severity issue
+- `1` -- at least one tool has an error-severity issue, input cannot be read, or input JSON is invalid
 
-Output format:
+Text output format:
 
 ```
 ✗ get_data (2 issues)
   warn  [description-length] Description is too short (8 chars, min 20)
   warn  [require-param-descriptions] Parameter 'id' has no description
 ✓ create_user (0 issues)
+```
+
+JSON output format:
+
+```json
+{
+  "version": "0.1.0",
+  "source": "tools.json",
+  "summary": {
+    "toolCount": 2,
+    "issueCount": 2,
+    "errorCount": 0,
+    "warningCount": 2,
+    "passed": true
+  },
+  "results": [
+    { "tool": "get_data", "issues": [], "passed": true }
+  ]
+}
+```
+
+## Examples
+
+A standalone example tool definition file is available in [`examples/tools.json`](examples/tools.json). Run it with:
+
+```bash
+npm run build
+node dist/cli.js examples/tools.json
+node dist/cli.js --json examples/tools.json
 ```
 
 ## Custom Rules

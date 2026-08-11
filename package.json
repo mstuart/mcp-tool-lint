@@ -10,7 +10,16 @@
     "ai",
     "claude"
   ],
+  "homepage": "https://github.com/mstuart/mcp-tool-lint#readme",
+  "bugs": {
+    "url": "https://github.com/mstuart/mcp-tool-lint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mstuart/mcp-tool-lint.git"
+  },
   "license": "MIT",
+  "author": "Mark Stuart <742884+mstuart@users.noreply.github.com>",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,13 +27,19 @@
     "mcp-tool-lint": "dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "examples",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "test": "tsc && node --experimental-strip-types --no-warnings --test tests/*.test.ts"
+    "pack:check": "npm pack --dry-run",
+    "test": "tsc && node --experimental-strip-types --no-warnings --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.6",
