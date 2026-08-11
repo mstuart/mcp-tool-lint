@@ -33,9 +33,19 @@ jobs:
       - name: Upgrade npm (OIDC trusted publishing needs npm >= 11.5; pin 11)
         run: npm install -g npm@11
       - name: Install
-        run: npm ci || npm install
-      - run: npm run build --if-present
+        run: npm ci
+      - run: npm run check
+      - run: npm run typecheck
+      - run: npm run build
       - run: npm test
+      - run: npm pack --dry-run
+      - name: Install smoke test
+        run: |
+          npm pack --pack-destination "$RUNNER_TEMP"
+          npm install -g "$RUNNER_TEMP"/mcp-tool-lint-*.tgz
+          mcp-tool-lint --version
+          mcp-tool-lint examples/tools.json
+          cat examples/tools.json | mcp-tool-lint --json -
       - name: Configure git identity
         run: |
           git config user.name "Mark Stuart"

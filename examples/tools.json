@@ -1,0 +1,34 @@
+[
+  {
+    "name": "get_user",
+    "description": "Retrieves a user record by unique identifier",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique user identifier"
+        }
+      },
+      "required": ["userId"]
+    }
+  },
+  {
+    "name": "update_user_email",
+    "description": "Updates the email address for an existing user account",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique user identifier"
+        },
+        "email": {
+          "type": "string",
+          "description": "The new email address to assign to the user"
+        }
+      },
+      "required": ["userId", "email"]
+    }
+  }
+]
