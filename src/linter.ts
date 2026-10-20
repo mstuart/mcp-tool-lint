@@ -27,10 +27,10 @@ export function lintTool(
   for (const rule of rules) {
     const ruleIssues = rule.check(tool, allTools);
     for (const issue of ruleIssues) {
-      if (severityOverrides[issue.rule]) {
-        issue.severity = severityOverrides[issue.rule];
-      }
-      issues.push(issue);
+      issues.push({
+        ...issue,
+        severity: severityOverrides[issue.rule] ?? issue.severity,
+      });
     }
   }
 
