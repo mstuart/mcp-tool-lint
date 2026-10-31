@@ -8,11 +8,9 @@ export const noDuplicateNames: Rule = {
       return issues;
     }
 
-    const duplicates = allTools.filter(
-      (t) => t !== tool && t.name === tool.name
-    );
+    const duplicates = allTools.filter((t) => t.name === tool.name);
 
-    if (duplicates.length > 0) {
+    if (duplicates.length > (allTools.includes(tool) ? 1 : 0)) {
       issues.push({
         field: "name",
         message: `Duplicate tool name "${tool.name}" found`,
