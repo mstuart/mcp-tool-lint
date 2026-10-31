@@ -29,7 +29,9 @@ export function lintTool(
     for (const issue of ruleIssues) {
       issues.push({
         ...issue,
-        severity: severityOverrides[issue.rule] ?? issue.severity,
+        severity: Object.hasOwn(severityOverrides, issue.rule)
+          ? (severityOverrides[issue.rule] ?? issue.severity)
+          : issue.severity,
       });
     }
   }
